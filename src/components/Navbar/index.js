@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -120,13 +121,23 @@ export default function Navbar() {
             <div className="m-10">
               <img className="m-2" src={require("src/assets/img/search.png")} />
             </div>
-            <div className="m-2">
-              <button
-                type="submit"
-                className="bg-[#5F2EEA] text-white font-bold py-2 w-[130px] h-[50px] w-full rounded-xl"
-              >
-                Sign up
-              </button>
+            <div className="m-2 flex">
+              <Link to="/user-login">
+                <button
+                  type="submit"
+                  className="bg-[#5F2EEA] text-white font-bold py-2 w-[130px] h-[50px] w-full rounded-xl mx-2"
+                >
+                  Sign in
+                </button>
+              </Link>
+              <Link to="/user-regist">
+                <button
+                  type="submit"
+                  className="bg-white text-[#5F2EEA] border border-[#5F2EEA] font-bold py-2 w-[130px] h-[50px] w-full rounded-xl mx-2"
+                >
+                  Sign up
+                </button>
+              </Link>
             </div>
           </section>
         </div>
