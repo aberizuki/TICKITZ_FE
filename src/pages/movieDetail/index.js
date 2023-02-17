@@ -59,7 +59,15 @@ export default function MovieDetail() {
             </div>
           </div>
         </div>
-        <div className="showtime"></div>
+        <div className="showtime">
+          <h1 className="text-[24px] font-bold text-center">
+            Showtime and Tickets
+          </h1>
+          <div className="flex justify-center">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>
       {/* <Footer /> */}
     </>
