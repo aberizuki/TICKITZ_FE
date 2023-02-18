@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/user-login" element={<UserLogin />} />
         <Route path="/user-regist" element={<UserRegist />} />
         <Route path="/user-reset" element={<UserReset />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/movieDetail" element={<MovieDetail />} />
 
         {/* <Route path="404" element={<InvalidRoute />} />

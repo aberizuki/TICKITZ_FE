@@ -1,15 +1,27 @@
 import Navbar from "src/components/Navbar";
 import Footer from "src/components/Footer";
+import HomeHeader from "src/section/HomeHeader";
+import NowShowing from "src/section/NowShowing";
+import UpcomingMovies from "src/section/UpcomingMovie";
+import Moviegoers from "src/section/Moviegoers";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useRef, useState } from "react";
+import { Pagination } from "swiper";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="">
         <div>
           <Navbar />
-          {/* <div className="flex text-center justify-center items-center text-[200px] font-bold h-[50vh] text-[#5F2EEA]">
-            SPIDERMAN
-          </div> */}
+          <HomeHeader />
+          <NowShowing />
+          <UpcomingMovies />
+          <Moviegoers />
           <Footer />
         </div>
       </main>
