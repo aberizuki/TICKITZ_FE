@@ -75,13 +75,13 @@ export default function MovieDetail() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap w-[100%]">
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
+        <div className="block sm:flex flex-wrap w-[100%]">
+          <div className="w-[100%] rounded-xl shadow-xl p-[30px] sm:w-[30%] m-[20px]">
+            <div className="block sm:flex w-[100%]">
               <div>
                 <img src={require("../../assets/img/ebv_id.png")} />
               </div>
-              <div className="px-[20px]">
+              <div className="sm:px-[20px]">
                 <h1>ebv_id</h1>
                 <h2 className=" text-[#6E7191]">
                   Whatever street No.12, South Purwokerto
@@ -89,17 +89,17 @@ export default function MovieDetail() {
               </div>
             </div>
             <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
             </div>
-            <div className="flex justify-between">
+            <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
               <h2 className="font-bold">$10.00/Seat</h2>
             </div>
-            <div className="flex justify-between mt-[30px]">
+            <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
                 Book now
               </button>
@@ -108,12 +108,12 @@ export default function MovieDetail() {
               </button>
             </div>
           </div>
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
+          <div className="w-[100%] rounded-xl shadow-xl p-[30px] sm:w-[30%] m-[20px]">
+            <div className="block sm:flex w-[100%]">
               <div>
                 <img src={require("../../assets/img/ebv_id.png")} />
               </div>
-              <div className="px-[20px]">
+              <div className="sm:px-[20px]">
                 <h1>ebv_id</h1>
                 <h2 className=" text-[#6E7191]">
                   Whatever street No.12, South Purwokerto
@@ -121,17 +121,17 @@ export default function MovieDetail() {
               </div>
             </div>
             <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
             </div>
-            <div className="flex justify-between">
+            <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
               <h2 className="font-bold">$10.00/Seat</h2>
             </div>
-            <div className="flex justify-between mt-[30px]">
+            <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
                 Book now
               </button>
@@ -140,12 +140,12 @@ export default function MovieDetail() {
               </button>
             </div>
           </div>
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
+          <div className="w-[100%] rounded-xl shadow-xl p-[30px] sm:w-[30%] m-[20px]">
+            <div className="block sm:flex w-[100%]">
               <div>
                 <img src={require("../../assets/img/ebv_id.png")} />
               </div>
-              <div className="px-[20px]">
+              <div className="sm:px-[20px]">
                 <h1>ebv_id</h1>
                 <h2 className=" text-[#6E7191]">
                   Whatever street No.12, South Purwokerto
@@ -153,113 +153,17 @@ export default function MovieDetail() {
               </div>
             </div>
             <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
+              <h1 className="p-[5px] sm:p-[10px]">08:30am</h1>
             </div>
-            <div className="flex justify-between">
+            <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
               <h2 className="font-bold">$10.00/Seat</h2>
             </div>
-            <div className="flex justify-between mt-[30px]">
-              <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
-                Book now
-              </button>
-              <button className="px-[30px] py-[10px] rounded font-bold text-[#5F2EEA]">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
-              <div>
-                <img src={require("../../assets/img/ebv_id.png")} />
-              </div>
-              <div className="px-[20px]">
-                <h1>ebv_id</h1>
-                <h2 className=" text-[#6E7191]">
-                  Whatever street No.12, South Purwokerto
-                </h2>
-              </div>
-            </div>
-            <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-            </div>
-            <div className="flex justify-between">
-              <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
-            </div>
-            <div className="flex justify-between mt-[30px]">
-              <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
-                Book now
-              </button>
-              <button className="px-[30px] py-[10px] rounded font-bold text-[#5F2EEA]">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
-              <div>
-                <img src={require("../../assets/img/ebv_id.png")} />
-              </div>
-              <div className="px-[20px]">
-                <h1>ebv_id</h1>
-                <h2 className=" text-[#6E7191]">
-                  Whatever street No.12, South Purwokerto
-                </h2>
-              </div>
-            </div>
-            <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-            </div>
-            <div className="flex justify-between">
-              <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
-            </div>
-            <div className="flex justify-between mt-[30px]">
-              <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
-                Book now
-              </button>
-              <button className="px-[30px] py-[10px] rounded font-bold text-[#5F2EEA]">
-                Add to cart
-              </button>
-            </div>
-          </div>
-          <div className="rounded-xl shadow-xl p-[30px] w-[30%] m-[20px]">
-            <div className="flex w-[100%]">
-              <div>
-                <img src={require("../../assets/img/ebv_id.png")} />
-              </div>
-              <div className="px-[20px]">
-                <h1>ebv_id</h1>
-                <h2 className=" text-[#6E7191]">
-                  Whatever street No.12, South Purwokerto
-                </h2>
-              </div>
-            </div>
-            <div className="flex flex-wrap w-[100%]">
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-              <h1 className="p-[10px]">08:30am</h1>
-            </div>
-            <div className="flex justify-between">
-              <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
-            </div>
-            <div className="flex justify-between mt-[30px]">
+            <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
                 Book now
               </button>
