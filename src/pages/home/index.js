@@ -7,9 +7,9 @@ export default function Home() {
       <main>
         <div>
           <Navbar />
-          <div className="flex text-center justify-center items-center text-[200px] font-bold h-[50vh] text-[#5F2EEA]">
+          {/* <div className="flex text-center justify-center items-center text-[200px] font-bold h-[50vh] text-[#5F2EEA]">
             SPIDERMAN
-          </div>
+          </div> */}
           <Footer />
         </div>
       </main>
