@@ -15,3 +15,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.containerz {
+  max-width: 1440px !important;
+  width: 100%;
+  padding: 0 150px;
+  height: 100%;
+}
