@@ -16,12 +16,14 @@ export default function Navbar() {
       <header className="w-screen h-[100px]">
         <div className="w-full p-2 flex items-center justify-between">
           <section className="flex lg:items-center lg:justify-evenly lg:ml-[80px]">
-            <div className="flex">
-              <img
-                className="m-10"
-                src={require("src/assets/img/tickitzpurple.png")}
-              />
-            </div>
+            <Link to="/">
+              <div className="flex">
+                <img
+                  className="m-10"
+                  src={require("src/assets/img/tickitzpurple.png")}
+                />
+              </div>
+            </Link>
             <div className="hidden md:hidden lg:flex">
               <div className="mx-5 font-semibold text-[#414141]">Movies</div>
               <div className="mx-5 font-semibold text-[#414141]">Cinemas</div>
