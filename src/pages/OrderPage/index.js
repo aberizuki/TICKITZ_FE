@@ -21,7 +21,7 @@ export default function Order() {
 
             <section className="hidden md:hidden lg:flex items-center justify-evenly mr-[80px]">
               <div className="m-2 hidden md:hidden lg:flex">
-                <Link to="/user-login">
+                <Link to="/">
                   <button
                     type="submit"
                     className="bg-white text-[#5F2EEA] font-semibold  py-2 w-[130px] h-[50px] w-[150px] rounded-full mx-2"

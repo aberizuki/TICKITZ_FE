@@ -2,30 +2,30 @@ import { useEffect, useState } from "react";
 import Data from "src/section/SeatSelection/data.json";
 
 export default function SeatSelection({ onNext, seatSelection }) {
-  const [chek, setChek] = useState([]);
-  const handleOnChek = (e) => {
-    console.log("ceheck", chek);
-    if (chek.length != 0) {
-      for (let i = 0; i < chek.length + 1; i++) {
-        if (chek[i] == e) {
+  const [check, setCheck] = useState([]);
+  const handleOnCheck = (e) => {
+    console.log("check", check);
+    if (check.length != 0) {
+      for (let i = 0; i < check.length + 1; i++) {
+        if (check[i] == e) {
           console.log("delete", e);
-          delete chek[i];
-          let data = chek.filter((item) => item != undefined);
-          setChek(data);
-          i = chek.length + 1;
+          delete check[i];
+          let data = check.filter((item) => item != undefined);
+          setCheck(data);
+          i = check.length + 1;
         } else {
           console.log("add", e);
-          setChek([...chek, e]);
+          setCheck([...check, e]);
         }
       }
     } else {
-      setChek([e]);
+      setCheck([e]);
     }
   };
 
   useEffect(() => {
     console.log("data");
-  }, [chek]);
+  }, [check]);
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
                       disabled={item.status ? true : false}
-                      onChange={(e) => handleOnChek(e.target.value)}
+                      onChange={(e) => handleOnCheck(e.target.value)}
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -73,7 +73,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
-                      onChange={(e) => handleOnChek(e.target.value)}
+                      onChange={(e) => handleOnCheck(e.target.value)}
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
