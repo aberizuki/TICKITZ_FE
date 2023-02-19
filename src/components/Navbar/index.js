@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-screen h-[100px]">
+      <header className="w-screen h-[100%]">
         <div className="w-full p-2 flex items-center justify-between">
           <section className="flex lg:items-center lg:justify-evenly lg:ml-[80px]">
             <Link to="/">
