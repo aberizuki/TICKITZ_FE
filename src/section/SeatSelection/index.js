@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 import Data from "src/section/SeatSelection/data.json";
-import SEATS from "src/constants/SeatOptions";
-import Button from "src/library/Button";
-import { Row, Label, Col, Pagination } from "reactstrap";
-import SingleSeat from "src/library/SingleSeat";
-const notAvailableSeat = ["K2", "I4", "I9"];
 
 export default function SeatSelection({ onNext, seatSelection }) {
   const [chek, setChek] = useState([]);
