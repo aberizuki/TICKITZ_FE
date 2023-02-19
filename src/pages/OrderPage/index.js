@@ -1,5 +1,9 @@
 import Navbar from "src/components/Navbar";
 import Footer from "src/components/Footer";
+import SeatSelection from "src/section/SeatSelection";
+import SeatSelectionMobile from "src/section/SeatSelelctionMobile";
+import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 
 export default function Order() {
@@ -30,23 +34,8 @@ export default function Order() {
           </div>
         </header>
         <section className="flex m-10 justify-evenly">
-          <section className="ml-10 w-[45vw]">
-            <div className="font-bold">Choose your seat</div>
-            <div className="rounded-xl my-5 bg-white h-[60vh] p-10">
-              <div></div>
-            </div>
-            <div className="my-10">
-              <div className="flex justify-between">
-                <button className="h-[70px] w-[300px] border-2 rounded-xl font-bold text-[#5F2EEA] p-2 border-[#5F2EEA]">
-                  Change your movie
-                </button>
-                <button className="shadow-xl h-[70px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]">
-                  Checkout now
-                </button>
-              </div>
-            </div>
-          </section>
-          <section className="mr-10 w-[25vw]">
+          <SeatSelection />
+          <section className="hidden md:hidden lg:block mr-10 w-[25vw]">
             <div className="font-bold">Order info</div>
             <div className="rounded-xl my-5 bg-white">
               <div className="p-5">
@@ -100,6 +89,9 @@ export default function Order() {
               </div>
             </div>
           </section>
+        </section>
+        <section className="flex justify-center">
+          <SeatSelectionMobile />
         </section>
       </main>
       <Footer />
