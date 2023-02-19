@@ -13,6 +13,9 @@ import UserReset from "src/pages/UserReset";
 import Home from "src/pages/home";
 import MovieDetail from "src/pages/movieDetail";
 
+import Payment from "src/pages/payment";
+import TicketResult from "src/pages/ticketResult";
+
 import InvalidRoute from "src/pages/InvalidRoute";
 // import { Provider } from "react-redux";
 // import configureStore from "../redux/store";
@@ -29,6 +32,9 @@ const App = () => {
         <Route path="/user-reset" element={<UserReset />} />
         <Route path="/" element={<Home />} />
         <Route path="/movieDetail" element={<MovieDetail />} />
+
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/ticketResult" element={<TicketResult />} />
 
         {/* <Route path="404" element={<InvalidRoute />} />
           <Route path="*" exact element={<Navigate to="404" />} /> */}
