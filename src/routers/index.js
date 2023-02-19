@@ -12,6 +12,7 @@ import UserRegist from "src/pages/UserRegist";
 import UserReset from "src/pages/UserReset";
 import Home from "src/pages/home";
 import MovieDetail from "src/pages/movieDetail";
+import Order from "src/pages/OrderPage";
 
 import InvalidRoute from "src/pages/InvalidRoute";
 // import { Provider } from "react-redux";
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/user-reset" element={<UserReset />} />
         <Route path="/" element={<Home />} />
         <Route path="/movieDetail" element={<MovieDetail />} />
+        <Route path="/order" element={<Order />} />
 
         {/* <Route path="404" element={<InvalidRoute />} />
           <Route path="*" exact element={<Navigate to="404" />} /> */}
