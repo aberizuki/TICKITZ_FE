@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function UpcomingMovies() {
   return (
     <>
-      <section className="h-[80vh] w-screen p-5">
+      <section className="w-screen p-5">
         <div className="flex m-5 justify-between">
           <div className="py-2 hover:text-[#5F2EEA] hover:border-b-2 border-[#5F2EEA]">
             <a className="m-2 font-bold lg:mx-10 lg:text-[24px] ">

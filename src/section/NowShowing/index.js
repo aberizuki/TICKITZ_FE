@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function NowShowing() {
   return (
     <>
-      <section className="h-[80vh] w-screen p-5 bg-[#F5F6F8]">
+      <section className="w-screen p-5 bg-[#F5F6F8]">
         <div className="flex m-5 justify-between">
           <div className="py-2 hover:text-[#5F2EEA] hover:border-b-2 border-[#5F2EEA]">
             <a className="m-2 font-bold lg:mx-10 lg:text-[24px] ">

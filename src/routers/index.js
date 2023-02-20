@@ -13,6 +13,7 @@ import UserReset from "src/pages/UserReset";
 import Home from "src/pages/home";
 import MovieDetail from "src/pages/movieDetail";
 import Order from "src/pages/OrderPage";
+import AdminPage from "src/pages/AdminPage";
 
 import Payment from "src/pages/payment";
 import TicketResult from "src/pages/ticketResult";
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/movieDetail" element={<MovieDetail />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/admin-page" element={<AdminPage />} />
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/ticketResult" element={<TicketResult />} />

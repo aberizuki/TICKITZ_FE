@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export default function UserReset() {
   return (
     <>
-      <main className="h-screen flex">
-        <section className="invisible w-[0px] lg:visible lg:w-screen bg-hero bg-no-repeat bg-cover">
+      <main className="flex">
+        <section className="hidden h-[1100px] lg:block lg:w-[60%] bg-hero bg-no-repeat bg-cover">
           <div className="m-[50px] h-[85%]  from-violet-500 to-fuchsia-500 flex ">
             <div className="">
               {/* <img
@@ -38,7 +38,7 @@ export default function UserReset() {
             </div>
           </div>
         </section>
-        <section className="w-screen md:w-screen lg:w-[120vh]">
+        <section className="w-screen md:w-screen lg:w-[80vh]">
           <div className="h-[85%] lg:m-[50px]">
             <div>
               <img
