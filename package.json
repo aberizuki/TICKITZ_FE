@@ -17,6 +17,7 @@
     "react-scripts": "5.0.1",
     "reactstrap": "^9.1.6",
     "redux-thunk": "^2.4.2",
+    "sweetalert2": "^11.7.2",
     "swiper": "^9.0.5",
     "web-vitals": "^2.1.4"
   },

@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
+
 export default function UserLogin() {
+  
+const Swal = require('sweetalert2')
+
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -15,15 +20,22 @@ export default function UserLogin() {
     event.preventDefault();
     console.log(loginForm);
     axios({
-      url: "http://localhost:5500/api/auth/login-user",
+      url: "http://localhost:5000/api/v1/auth/login",
       method: "POST",
       data: loginForm,
     })
       .then((res) => {
         console.log(res.data.data);
-        localStorage.setItem("@userLogin", JSON.stringify(res.data.result));
-        alert(res.data.message);
-        navigate("/home");
+        localStorage.setItem("@userLogin", JSON.stringify(res.data.data));
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500
+        })        
+        // alert(res.data.message);
+        navigate("/");
       })
       .catch((err) => {
         setValidate({ error: true, message: err.response.data.message });
@@ -33,7 +45,7 @@ export default function UserLogin() {
   // console.log(localStorage.getItem("@userLogin"));
   useEffect(() => {
     if (localStorage.getItem("@userLogin")) {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
 
