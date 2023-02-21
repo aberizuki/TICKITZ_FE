@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/admin-page" element={<AdminPage />} />
 
         <Route path="/payment" element={<Payment />} />
-        <Route path="/ticketResult" element={<TicketResult />} />
+        <Route path="/ticketResult/:id" element={<TicketResult />} />
         <Route path="/profile" element={<Profile />} />
 
         {/* <Route path="404" element={<InvalidRoute />} />
