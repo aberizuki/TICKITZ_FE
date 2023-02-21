@@ -5,26 +5,39 @@ import { Link } from "react-router-dom";
 
 export default function UserRegist() {
   const [signupForm, setSignupForm] = useState({
-    full_name: "",
     email: "",
     password: "",
-    phone: "",
   });
   const [validate, setValidate] = useState({ error: false, message: "" });
   const navigate = useNavigate();
 
   const handleSignup = (event) => {
+
+    const Swal = require("sweetalert2");
+
+
     event.preventDefault();
     console.log(signupForm);
     axios({
-      url: "http://localhost:5500/api/auth/regis-user",
+      url: "http://localhost:5000/api/v1/auth/register",
       method: "POST",
       data: signupForm,
     })
       .then((res) => {
         // console.log(res.data.data);
-        alert(res.data.message);
-        navigate("/user-Signup");
+
+        Swal.fire({
+          title: res.data.message,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+
+        // alert(res.data.message);
+        navigate("/user-login");
       })
       .catch((err) => {
         setValidate({ error: true, message: err.response.data.errors });
@@ -33,9 +46,9 @@ export default function UserRegist() {
 
   return (
     <>
-      <main className="h-screen flex">
-        <section className="invisible w-[0px] lg:visible lg:w-screen bg-hero bg-no-repeat bg-cover">
-          <div className="m-[50px] h-[85%]  from-violet-500 to-fuchsia-500 flex ">
+      <main className="flex">
+        <section className="hidden h-[1100px] lg:block lg:w-[60%] bg-hero bg-no-repeat bg-cover">
+          <div className="m-[50px]  from-violet-500 to-fuchsia-500 flex ">
             <div className="">
               {/* <img
                 className="pl-10 pt-10 invisible lg:visible"
@@ -175,30 +188,31 @@ export default function UserRegist() {
               <div className="text-center text-[#AAAAAA] py-6">Or</div>
               <div className="flex">
                 <div className="flex justify-center w-full my-5">
-                  <div className="flex">
-                    <button
-                      type="submit"
-                      className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-[300px] lg:w-[300px] rounded-xl mx-5 text-[#AAAAAA]"
-                    >
-                      <img
-                        className="md:mr-5 lg:mr-5"
-                        src={require("src/assets/img/google.png")}
-                      />
-                      <div className="hidden md:flex lg:flex">Google</div>
-                    </button>
-                  </div>
-                  <div className="flex">
-                    <button
-                      type="submit"
-                      className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-[300px] lg:w-[300px] rounded-xl mx-5 text-[#AAAAAA]"
-                    >
-                      <img
-                        className="md:mr-5 lg:mr-5"
-                        src={require("src/assets/img/facebook.png")}
-                      />
-                      <div className="hidden md:flex lg:flex">Facebook</div>
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-full lg:w-full rounded-xl mx-5 text-[#AAAAAA]"
+                  >
+                    <img
+                      className="md:mr-5 lg:mr-5"
+                      src={require("src/assets/img/google.png")}
+                    />
+                    <div className="hidden md:flex lg:flex  text-black">
+                      Google
+                    </div>
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-full lg:w-full rounded-xl mx-5 text-[#AAAAAA]"
+                  >
+                    <img
+                      className="md:mr-5 lg:mr-5"
+                      src={require("src/assets/img/facebook.png")}
+                    />
+                    <div className="hidden md:flex lg:flex  text-black">
+                      Facebook
+                    </div>
+                  </button>
                 </div>
               </div>
             </form>
