@@ -6,6 +6,31 @@ import { Navigate, useNavigate } from "react-router-dom";
 export default function SeatSelection({ onNext, seatSelection }) {
   const navigate = useNavigate();
 
+  // const [check, setCheck] = useState([]);
+  // const handleOnCheck = (e) => {
+  //   console.log("check", check);
+  //   if (check.length != 0) {
+  //     for (let i = 0; i < check.length + 1; i++) {
+  //       if (check[i] == e) {
+  //         console.log("delete", e);
+  //         delete check[i];
+  //         let data = check.filter((item) => item != undefined);
+  //         setCheck(data);
+  //         i = check.length + 1;
+  //       } else {
+  //         console.log("add", e);
+  //         setCheck([...check, e]);
+  //       }
+  //     }
+  //   } else {
+  //     setCheck([e]);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   console.log("data");
+  // }, [check]);
+
   const [check, setCheck] = useState({
     order_id: "1",
     user_id: JSON.parse(localStorage.getItem("@userLogin")).user.user_id,
@@ -14,7 +39,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
     date: "Febuary 20, 2023",
     time: "08.00 pm",
     theater: "CGV",
-    seats: "",
+    seatss: [],
     total_seats: 3,
     price: 105000,
   });
@@ -54,7 +79,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
   };
 
   useEffect(() => {
-    console.log("data");
+    console.log(check);
   }, [check]);
 
   return (
@@ -89,7 +114,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       onChange={(e) =>
                         setCheck({
                           ...check,
-                          seats: e.target.value,
+                          seatss: [e.target.value],
                         })
                       }
                     />
@@ -111,14 +136,12 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
-
                       onChange={(e) =>
                         setCheck({
                           ...check,
                           seats: e.target.value,
                         })
                       }
-
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">

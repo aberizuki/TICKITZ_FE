@@ -40,7 +40,7 @@ const App = () => {
 
         <Route path="/payment" element={<Payment />} />
         <Route path="/ticketResult" element={<TicketResult />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile />} />
 
         {/* <Route path="404" element={<InvalidRoute />} />
           <Route path="*" exact element={<Navigate to="404" />} /> */}
