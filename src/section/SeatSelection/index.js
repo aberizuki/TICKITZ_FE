@@ -111,12 +111,14 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
+
                       onChange={(e) =>
                         setCheck({
                           ...check,
                           seats: e.target.value,
                         })
                       }
+
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">

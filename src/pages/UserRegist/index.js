@@ -12,9 +12,7 @@ export default function UserRegist() {
   const navigate = useNavigate();
 
   const handleSignup = (event) => {
-
     const Swal = require("sweetalert2");
-
 
     event.preventDefault();
     console.log(signupForm);
