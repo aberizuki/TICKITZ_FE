@@ -219,7 +219,7 @@ export default function Authenticated({ setIsLogin }) {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/profile"
                               className={classNames(
                                 active
                                   ? "bg-gray-100 text-gray-900"

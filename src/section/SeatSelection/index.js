@@ -4,7 +4,6 @@ import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function SeatSelection({ onNext, seatSelection }) {
-
   const navigate = useNavigate();
 
   const [check, setCheck] = useState({
@@ -22,7 +21,6 @@ export default function SeatSelection({ onNext, seatSelection }) {
 
   const handleOnCheck = async (e) => {
     e.preventDefault();
-
 
     console.log("check", check);
     if (check.length !== 0) {
@@ -42,7 +40,6 @@ export default function SeatSelection({ onNext, seatSelection }) {
       setCheck([e]);
     }
 
-
     try {
       await axios({
         url: "http://localhost:5000/api/v1/order",
@@ -54,7 +51,6 @@ export default function SeatSelection({ onNext, seatSelection }) {
     } catch (error) {
       console.log(error.message);
     }
-
   };
 
   useEffect(() => {
@@ -63,7 +59,10 @@ export default function SeatSelection({ onNext, seatSelection }) {
 
   return (
     <>
-      <form onSubmit={handleOnCheck} className="lg:ml-10 w-full md:w-[80vw] lg:w-[44vw]">
+      <form
+        onSubmit={handleOnCheck}
+        className="lg:ml-10 w-full md:w-[80vw] lg:w-[44vw]"
+      >
         <div className="font-bold">Choose your seat</div>
         <div className="rounded-xl my-5 bg-white p-10">
           <div>
@@ -87,14 +86,12 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       // value={item.site}
                       disabled={item.status ? true : false}
-
                       onChange={(e) =>
                         setCheck({
                           ...check,
                           seats: e.target.value,
                         })
                       }
-
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -114,14 +111,13 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
-
-                      onChange={(e) =>
-                        setCheck({
-                          ...check,
-                          seats: e.target.value,
-                        })
-                      }
-
+                      // onChange={(e) =>
+                      //   setCheck({
+                      //     ...check,
+                      //     seats: e.target.value,
+                      //   })
+                      // }
+                      onChange={(e) => handleOnCheck(e.target.value)}
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -183,7 +179,10 @@ export default function SeatSelection({ onNext, seatSelection }) {
             <button className="h-[50px] w-[300px] border-2 rounded-xl font-bold text-[#5F2EEA] p-2 border-[#5F2EEA]">
               Change your movie
             </button>
-            <button type="submit" className="shadow-xl h-[50px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]">
+            <button
+              type="submit"
+              className="shadow-xl h-[50px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]"
+            >
               Checkout now
             </button>
           </div>
