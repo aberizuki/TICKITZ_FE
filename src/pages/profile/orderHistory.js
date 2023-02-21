@@ -1,4 +1,18 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 export default function OrderHistory() {
+  const { id } = useParams();
+
+  const [orderHistory, setOrderHistory] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/v1/order/user/${id}`)
+      .then((res) => setOrderHistory(res.data.data))
+      .catch((err) => console.log(err.message));
+  });
+
   return (
     <>
       <div>
@@ -7,9 +21,9 @@ export default function OrderHistory() {
           <div className="border-[1px] rounded m-[20px]">
             <div className="flex justify-between px-[10px] py-[50px]">
               <div>
-                <h1 className="text-[14px]">Tuesday, 07 July 2020 - 04:30pm</h1>
+                <h1 className="text-[14px]">{orderHistory.date}</h1>
                 <h2 className="font-bold text-[24px]">
-                  Spider-Man: Homecoming
+                  {orderHistory.movies_name}
                 </h2>
               </div>
               <div className="flex items-center">

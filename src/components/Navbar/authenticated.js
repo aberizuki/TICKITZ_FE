@@ -3,12 +3,21 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Authenticated({ setIsLogin }) {
+  const id = JSON.parse(localStorage.getItem("@userLogin"))?.user.user_id;
+  const [profile, setProfile] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/v1/users/${id}`)
+      .then((res) => setProfile(res.data.data))
+      .catch((err) => console.log(err.message));
+  });
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <>
@@ -54,7 +63,9 @@ export default function Authenticated({ setIsLogin }) {
                     <a href="/contact">Buy Ticket</a>
                   </li>
                   <li className=" border-gray-400 my-8 font-semibold">
-                    <a href="/contact">Profile</a>
+                    <Link to={`/profile/${id}`}>
+                      <button>Profile</button>
+                    </Link>
                   </li>
                   <li className=" border-gray-400 my-8 font-semibold">
                     <a href="/contact">History</a>
@@ -200,7 +211,7 @@ export default function Authenticated({ setIsLogin }) {
                     <Menu.Button className="">
                       <img
                         className=" h-[50px] w-[50px] rounded-full mx-2 "
-                        src={require("src/assets/img/profile2.png")}
+                        src={`http://localhost:5000/uploads/images/${profile.profile_image}`}
                       />
                     </Menu.Button>
                   </div>
@@ -218,17 +229,19 @@ export default function Authenticated({ setIsLogin }) {
                       <div className="py-1">
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm"
-                              )}
-                            >
-                              Profile
-                            </a>
+                            <Link to={`/profile/${id}`}>
+                              <a
+                                href="#"
+                                className={classNames(
+                                  active
+                                    ? "bg-gray-100 text-gray-900"
+                                    : "text-gray-700",
+                                  "block px-4 py-2 text-sm"
+                                )}
+                              >
+                                Profile
+                              </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>

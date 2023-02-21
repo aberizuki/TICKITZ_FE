@@ -4,8 +4,32 @@ import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function SeatSelection({ onNext, seatSelection }) {
-
   const navigate = useNavigate();
+
+  // const [check, setCheck] = useState([]);
+  // const handleOnCheck = (e) => {
+  //   console.log("check", check);
+  //   if (check.length != 0) {
+  //     for (let i = 0; i < check.length + 1; i++) {
+  //       if (check[i] == e) {
+  //         console.log("delete", e);
+  //         delete check[i];
+  //         let data = check.filter((item) => item != undefined);
+  //         setCheck(data);
+  //         i = check.length + 1;
+  //       } else {
+  //         console.log("add", e);
+  //         setCheck([...check, e]);
+  //       }
+  //     }
+  //   } else {
+  //     setCheck([e]);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   console.log("data");
+  // }, [check]);
 
   const [check, setCheck] = useState({
     order_id: "1",
@@ -15,14 +39,13 @@ export default function SeatSelection({ onNext, seatSelection }) {
     date: "Febuary 20, 2023",
     time: "08.00 pm",
     theater: "CGV",
-    seats: "",
+    seatss: [],
     total_seats: 3,
     price: 105000,
   });
 
   const handleOnCheck = async (e) => {
     e.preventDefault();
-
 
     console.log("check", check);
     if (check.length !== 0) {
@@ -42,7 +65,6 @@ export default function SeatSelection({ onNext, seatSelection }) {
       setCheck([e]);
     }
 
-
     try {
       await axios({
         url: "http://localhost:5000/api/v1/order",
@@ -54,16 +76,18 @@ export default function SeatSelection({ onNext, seatSelection }) {
     } catch (error) {
       console.log(error.message);
     }
-
   };
 
   useEffect(() => {
-    console.log("data");
+    console.log(check);
   }, [check]);
 
   return (
     <>
-      <form onSubmit={handleOnCheck} className="lg:ml-10 w-full md:w-[80vw] lg:w-[44vw]">
+      <form
+        onSubmit={handleOnCheck}
+        className="lg:ml-10 w-full md:w-[80vw] lg:w-[44vw]"
+      >
         <div className="font-bold">Choose your seat</div>
         <div className="rounded-xl my-5 bg-white p-10">
           <div>
@@ -85,16 +109,15 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       key={i}
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
-                      // value={item.site}
+                      value={item.site}
                       disabled={item.status ? true : false}
-
+                      // onChange={(e) => handleOnCheck(e.target.value)}
                       onChange={(e) =>
                         setCheck({
                           ...check,
-                          seats: e.target.value,
+                          seatss: [e.target.value],
                         })
                       }
-
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -114,14 +137,12 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
-
                       onChange={(e) =>
                         setCheck({
                           ...check,
                           seats: e.target.value,
                         })
                       }
-
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -183,7 +204,10 @@ export default function SeatSelection({ onNext, seatSelection }) {
             <button className="h-[50px] w-[300px] border-2 rounded-xl font-bold text-[#5F2EEA] p-2 border-[#5F2EEA]">
               Change your movie
             </button>
-            <button type="submit" className="shadow-xl h-[50px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]">
+            <button
+              type="submit"
+              className="shadow-xl h-[50px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]"
+            >
               Checkout now
             </button>
           </div>
