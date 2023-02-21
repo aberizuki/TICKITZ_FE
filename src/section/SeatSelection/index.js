@@ -8,23 +8,21 @@ export default function SeatSelection({ onNext, seatSelection }) {
   const navigate = useNavigate();
 
   const [check, setCheck] = useState({
-  
-    order_id: '1',
-    user_id: JSON.parse(localStorage.getItem('@userLogin')).user.user_id,
-    movies_id: '3',
-    movies_name: 'Spiderman 2',
-    date: 'Febuary 20, 2023',
-    time: '08.00 pm',
-    theater: 'CGV',
-    seats: '',
+    order_id: "1",
+    user_id: JSON.parse(localStorage.getItem("@userLogin")).user.user_id,
+    movies_id: "3",
+    movies_name: "Spiderman 2",
+    date: "Febuary 20, 2023",
+    time: "08.00 pm",
+    theater: "CGV",
+    seats: "",
     total_seats: 3,
     price: 105000,
-
   });
 
   const handleOnCheck = async (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
 
     console.log("check", check);
     if (check.length !== 0) {
@@ -44,17 +42,18 @@ export default function SeatSelection({ onNext, seatSelection }) {
       setCheck([e]);
     }
 
-     try {
-        await axios({
-          url: 'http://localhost:5000/api/v1/order',
-          method: "POST",
-          data: check,
-        })
-        
-        navigate('/ticketResult')
+
+    try {
+      await axios({
+        url: "http://localhost:5000/api/v1/order",
+        method: "POST",
+        data: check,
+      });
+
+      navigate("/ticketResult");
     } catch (error) {
-      console.log(error.message);  
-    } 
+      console.log(error.message);
+    }
 
   };
 
@@ -88,11 +87,14 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       // value={item.site}
                       disabled={item.status ? true : false}
-                      value={item.site}
-                      onChange={(e) => setCheck({
-                                      ...check,
-                                      seats: e.target.value
-                      })}
+
+                      onChange={(e) =>
+                        setCheck({
+                          ...check,
+                          seats: e.target.value,
+                        })
+                      }
+
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
@@ -112,10 +114,14 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       type="checkbox"
                       className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       value={item.site}
-                      onChange={(e) => setCheck({
-                                      ...check,
-                                      seats: e.target.value
-                      })}
+
+                      onChange={(e) =>
+                        setCheck({
+                          ...check,
+                          seats: e.target.value,
+                        })
+                      }
+
                     />
                   ))}
                   <div className="text-[12px] md:text-[18px] lg:text-[20px] flex w-[80%]  justify-between text-lg font-semibold">
