@@ -12,7 +12,9 @@ export default function UserRegist() {
   const navigate = useNavigate();
 
   const handleSignup = (event) => {
+
     const Swal = require("sweetalert2");
+
 
     event.preventDefault();
     console.log(signupForm);
@@ -23,6 +25,7 @@ export default function UserRegist() {
     })
       .then((res) => {
         // console.log(res.data.data);
+
         Swal.fire({
           title: res.data.message,
           showClass: {
@@ -32,6 +35,7 @@ export default function UserRegist() {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
+
         // alert(res.data.message);
         navigate("/user-login");
       })

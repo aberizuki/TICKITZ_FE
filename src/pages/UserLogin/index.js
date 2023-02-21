@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
+
 export default function UserLogin() {
+
   const Swal = require("sweetalert2");
+
 
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -25,12 +29,14 @@ export default function UserLogin() {
         console.log(res.data.data);
         localStorage.setItem("@userLogin", JSON.stringify(res.data.data));
         Swal.fire({
+
           position: "top-end",
           icon: "success",
           title: res.data.message,
           showConfirmButton: false,
           timer: 1500,
         });
+
         // alert(res.data.message);
         navigate("/");
       })
