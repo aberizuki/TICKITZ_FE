@@ -34,13 +34,16 @@ const App = () => {
         <Route path="/user-regist" element={<UserRegist />} />
         <Route path="/user-reset" element={<UserReset />} />
         <Route path="/" element={<Home />} />
-        <Route path="/movieDetail" element={<MovieDetail />} />
+        <Route path="/movieDetail/:id" element={<MovieDetail />} />
         <Route path="/order" element={<Order />} />
         <Route path="/admin-page" element={<AdminPage />} />
 
         <Route path="/payment" element={<Payment />} />
+
         <Route path="/ticketResult/:id" element={<TicketResult />} />
-        <Route path="/profile" element={<Profile />} />
+
+        <Route path="/profile/:id" element={<Profile />} />
+
 
         {/* <Route path="404" element={<InvalidRoute />} />
           <Route path="*" exact element={<Navigate to="404" />} /> */}
