@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function UserLogin() {
+  const Swal = require("sweetalert2");
+
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -15,15 +17,22 @@ export default function UserLogin() {
     event.preventDefault();
     console.log(loginForm);
     axios({
-      url: "http://localhost:5500/api/auth/login-user",
+      url: "http://localhost:5000/api/v1/auth/login",
       method: "POST",
       data: loginForm,
     })
       .then((res) => {
         console.log(res.data.data);
-        localStorage.setItem("@userLogin", JSON.stringify(res.data.result));
-        alert(res.data.message);
-        navigate("/home");
+        localStorage.setItem("@userLogin", JSON.stringify(res.data.data));
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // alert(res.data.message);
+        navigate("/");
       })
       .catch((err) => {
         setValidate({ error: true, message: err.response.data.message });
@@ -33,15 +42,15 @@ export default function UserLogin() {
   // console.log(localStorage.getItem("@userLogin"));
   useEffect(() => {
     if (localStorage.getItem("@userLogin")) {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
 
   return (
     <>
-      <main className="h-screen flex">
-        <section className="invisible w-[0px] lg:visible lg:w-screen bg-hero bg-no-repeat bg-cover">
-          <div className="m-[50px] h-[85%]  from-violet-500 to-fuchsia-500 flex items-center justify-center">
+      <main className="flex">
+        <section className="hidden h-[1100px] lg:block lg:w-[60%] bg-hero bg-no-repeat bg-cover">
+          <div className="m-[50px]  from-violet-500 to-fuchsia-500 flex items-center justify-center">
             <div className="">
               {/* <img
                 className="pl-10 pt-10 invisible lg:visible"
@@ -65,14 +74,14 @@ export default function UserLogin() {
           </div>
         </section>
         <section className="w-screen md:w-screen lg:w-[80vh]">
-          <div className="h-[85%] lg:m-[50px]">
+          <div className=" lg:m-[50px]">
             <div>
               <img
                 className="pl-5 pt-10 flex lg:hidden"
                 src={require("src/assets/img/tickitzpurple.png")}
               />
             </div>
-            <div className="visible pl-5 pt-10 text-[32px] font-bold text-[#121212] lg:invisible lg:h-[0%] ">
+            <div className="visible pl-5 pt-10 text-[32px] font-bold text-[#121212] lg:invisible">
               Sign in
             </div>
             <div className=" invisible lg:visible lg:pl-5 lg:text-[48px] font-bold text-[#121212]">
@@ -160,32 +169,33 @@ export default function UserLogin() {
                 </Link>
               </div>
               <div className="text-center text-[#AAAAAA] py-6">Or</div>
-              <div className="flex">
+              <div className="">
                 <div className="flex justify-center w-full my-5">
-                  <div className="flex">
-                    <button
-                      type="submit"
-                      className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-[300px] lg:w-[300px] rounded-xl mx-5 text-[#AAAAAA]"
-                    >
-                      <img
-                        className="md:mr-5 lg:mr-5"
-                        src={require("src/assets/img/google.png")}
-                      />
-                      <div className="hidden md:flex lg:flex">Google</div>
-                    </button>
-                  </div>
-                  <div className="flex">
-                    <button
-                      type="submit"
-                      className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-[300px] lg:w-[300px] rounded-xl mx-5 text-[#AAAAAA]"
-                    >
-                      <img
-                        className="md:mr-5 lg:mr-5"
-                        src={require("src/assets/img/facebook.png")}
-                      />
-                      <div className="hidden md:flex lg:flex">Facebook</div>
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-full lg:w-full rounded-xl mx-5 text-[#AAAAAA]"
+                  >
+                    <img
+                      className="md:mr-5 lg:mr-5"
+                      src={require("src/assets/img/google.png")}
+                    />
+                    <div className="hidden md:flex lg:flex  text-black">
+                      Google
+                    </div>
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="flex justify-center items-center bg-white drop-shadow-xl text-white font-semibold py-2 w-[343px] h-[65px] w-[80px] md:w-full lg:w-full rounded-xl mx-5 text-[#AAAAAA]"
+                  >
+                    <img
+                      className="md:mr-5 lg:mr-5"
+                      src={require("src/assets/img/facebook.png")}
+                    />
+                    <div className="hidden md:flex lg:flex  text-black">
+                      Facebook
+                    </div>
+                  </button>
                 </div>
               </div>
             </form>
