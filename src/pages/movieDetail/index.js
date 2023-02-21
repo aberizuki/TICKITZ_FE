@@ -4,13 +4,19 @@ import LocationDropdown from "./locationDropdown";
 import DateDropdown from "./dateDropdown";
 import React from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function MovieDetail() {
   const [movies, setMovies] = React.useState([]);
   // const [image, setImage] = React.useState(null);
 
   const { id } = useParams();
+  // const navigate = useNavigate();
+
+  // const changePage = () => {
+  //   navigate(`order/${id}`);
+  // };
 
   const getMoviesById = (id) => {
     return axios.get(`http://localhost:5000/api/v1/movies/${id}`);
@@ -117,9 +123,15 @@ export default function MovieDetail() {
               <h2 className="font-bold">{movies.price}/Seat</h2>
             </div>
             <div className="block sm:flex justify-between mt-[30px]">
-              <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
-                Book now
-              </button>
+              <Link to={`/order/${movies.movies_id}`}>
+                <button
+                  // onClick={changePage}
+                  className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]"
+                >
+                  Book now
+                </button>
+              </Link>
+
               <button className="px-[30px] py-[10px] rounded font-bold text-[#5F2EEA]">
                 Add to cart
               </button>
