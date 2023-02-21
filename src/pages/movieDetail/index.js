@@ -2,8 +2,32 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import LocationDropdown from "./locationDropdown";
 import DateDropdown from "./dateDropdown";
+import React from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function MovieDetail() {
+  const [movies, setMovies] = React.useState([]);
+  // const [image, setImage] = React.useState(null);
+
+  const { id } = useParams();
+
+  const getMoviesById = (id) => {
+    return axios.get(`http://localhost:5000/api/v1/movies/${id}`);
+  };
+
+  React.useEffect(() => {
+    getMoviesById(id)
+      .then((response) => {
+        // data yang diterima dari server
+        setMovies(response.data.data);
+        console.log(response.data.data);
+        // setImage(response.data.data.images[0].filename);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
   return (
     <>
       <Navbar />
@@ -11,52 +35,45 @@ export default function MovieDetail() {
         <div className="w-[100%] object-center sm:flex justify-center w-[100%]">
           <div className="border-[1px] rounded-xl ">
             <div className="p-[50px]">
-              <img src={require("../../assets/img/movieDetail.png")} />
+              <img
+                src={`http://localhost:5000/public/uploads/images/${movies.image}`}
+              />
             </div>
           </div>
           <div>
             <div className="px-[50px]">
               <div className="pb-[30px]">
                 <h1 className="font-bold text-[32px] my-[30px] sm:my-[0px]">
-                  Spider-Man: Homecoming
+                  {movies.movies_name}
                 </h1>
-                <h2>Adventure, Action, Sci-Fi</h2>
+                <h2>{movies.category}</h2>
               </div>
 
               <div className="flex mb-[30px]">
                 <div className="mr-[70px]">
                   <h1 className="text-[#8692A6]">Release Date</h1>
-                  <h2>June 28 1999</h2>
+                  <h2>{movies.release_date}</h2>
                 </div>
                 <div>
                   <h1 className="text-[#8692A6]">Directed by</h1>
-                  <h2>Jon Watss</h2>
+                  <h2>{movies.director}</h2>
                 </div>
               </div>
               <div className="flex mb-[30px]">
                 <div className="mr-[30px]">
                   <h1 className="text-[#8692A6]">Duration</h1>
-                  <h2>2 Hour 13 Minutes</h2>
+                  <h2>{movies.duration}</h2>
                 </div>
                 <div>
                   <h1 className="text-[#8692A6]">Cast</h1>
-                  <h2>Tom Holland, Michael Keaton, Robert Downey Jr., ...</h2>
+                  <h2>{movies.casts}</h2>
                 </div>
               </div>
               <hr className="mb-[30px]" />
               <div>
                 <div className="w-[100%] sm:w-[50%]">
                   <h1 className="font-[20px] mb-[10px]">Synopsis</h1>
-                  <h2 className="w-[100%] sm:w-[50vw]">
-                    Thrilled by his experience with the Avengers, Peter returns
-                    home, where he lives with his Aunt May, under the watchful
-                    eye of his new mentor Tony Stark, Peter tries to fall back
-                    into his normal daily routine - distracted by thoughts of
-                    proving himself to be more than just your friendly
-                    neighborhood Spider-Man - but when the Vulture emerges as a
-                    new villain, everything that Peter holds most important will
-                    be threatened.
-                  </h2>
+                  <h2 className="w-[100%] sm:w-[50vw]">{movies.synopsis}</h2>
                 </div>
               </div>
             </div>
@@ -97,7 +114,7 @@ export default function MovieDetail() {
             </div>
             <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
+              <h2 className="font-bold">{movies.price}/Seat</h2>
             </div>
             <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
@@ -129,7 +146,7 @@ export default function MovieDetail() {
             </div>
             <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
+              <h2 className="font-bold">{movies.price}/Seat</h2>
             </div>
             <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
@@ -161,7 +178,7 @@ export default function MovieDetail() {
             </div>
             <div className="block sm:flex justify-between">
               <h1 className="font-bold">price</h1>
-              <h2 className="font-bold">$10.00/Seat</h2>
+              <h2 className="font-bold">{movies.price}/Seat</h2>
             </div>
             <div className="block sm:flex justify-between mt-[30px]">
               <button className="px-[30px] py-[10px] rounded font-bold bg-[#5F2EEA] text-[#FFFFFF]">
