@@ -43,7 +43,7 @@ export default function SeatSelection({ onNext, seatSelection }) {
     seats: {},
     total_seats: 1,
     price: 35000,
-
+  });
 
   const handleOnCheck = async (e) => {
     e.preventDefault();
@@ -72,15 +72,11 @@ export default function SeatSelection({ onNext, seatSelection }) {
         method: "POST",
         data: check,
       });
-
-      
     } catch (error) {
       console.log(error.message);
     }
 
     navigate(`/payment`);
-
-
   };
 
   useEffect(() => {
@@ -113,11 +109,9 @@ export default function SeatSelection({ onNext, seatSelection }) {
                     <input
                       key={i}
                       type="checkbox"
-
-                      className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"                    
+                      className="bg-[#D6D8E7] appearance-none checked:bg-[#5F2EEA] w-[10%] md:w-[10%] h-5 md:h-7 md:mr-2 mr-1 mb-2 rounded"
                       disabled={item.status ? true : false}
                       value={item.site}
-
                       onChange={(e) =>
                         setCheck({
                           ...check,
