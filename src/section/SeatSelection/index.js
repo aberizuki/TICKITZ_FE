@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Data from "src/section/SeatSelection/data.json";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function SeatSelection({ onNext, seatSelection }) {
+export default function SeatSelection({ id }) {
   const navigate = useNavigate();
 
   // const [check, setCheck] = useState([]);
@@ -30,19 +31,29 @@ export default function SeatSelection({ onNext, seatSelection }) {
   // useEffect(() => {
   //   console.log("data");
   // }, [check]);
+  const [movieDetail, setMovieDetail] = useState();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/v1/movies/${id}`)
+      .then((res) => {
+        setMovieDetail(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  });
 
   const [check, setCheck] = useState({
-    order_id: "",
     user_id: JSON.parse(localStorage.getItem("@userLogin")).user.user_id,
-    movies_id: "3",
-    movies_name: "Spiderman 2",
+    movies_id: id,
+    movies_name: "",
     date: "Feb 22, 2023",
     time: "08.00 pm",
     theater: "CGV",
-
-    seats: {},
+    seats: "",
     total_seats: 1,
-    price: 35000,
+
+    price: 50000,
+
   });
 
   const handleOnCheck = async (e) => {
@@ -76,7 +87,10 @@ export default function SeatSelection({ onNext, seatSelection }) {
       console.log(error.message);
     }
 
-    navigate(`/payment`);
+
+    localStorage.setItem("@order", check.order_id);
+    navigate(`/payment/${id}`);
+
   };
 
   useEffect(() => {
@@ -115,7 +129,8 @@ export default function SeatSelection({ onNext, seatSelection }) {
                       onChange={(e) =>
                         setCheck({
                           ...check,
-                          seatss: [e.target.value],
+                          seats: e.target.value,
+                          movies_name: movieDetail.movies_name,
                         })
                       }
                     />
@@ -204,12 +219,14 @@ export default function SeatSelection({ onNext, seatSelection }) {
             <button className="h-[50px] w-[300px] border-2 rounded-xl font-bold text-[#5F2EEA] p-2 border-[#5F2EEA]">
               Change your movie
             </button>
+            {/* <Link to={`/payment/${id}`}> */}
             <button
               type="submit"
               className="shadow-xl h-[50px] w-[300px] border-2 rounded-xl font-bold text-white p-2 bg-[#5F2EEA]"
             >
               Checkout now
             </button>
+            {/* </Link> */}
           </div>
         </div>
       </form>

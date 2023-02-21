@@ -5,19 +5,21 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 export default function TicketResult() {
+  const { id } = useParams();
 
-  const { id } = useParams()
+  const [dataTicket, setDataTicket] = useState([]);
 
-    const [dataTicket, setDataTicket] = useState([])
+  const url = "http://localhost:5000/api/v1/order/movies";
 
-    const url = 'http://localhost:5000/api/v1/order';
-
-    useEffect(()=> {
-        axios.get(`${url}/${id}`)
-        .then((res) => setDataTicket(res.data.data))
-        .catch((err)=> console.log(err))
-    }, []) 
-
+  useEffect(() => {
+    axios
+      .get(`${url}/${id}`)
+      .then((res) => {
+        console.log(res.data.data);
+        setDataTicket(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -38,7 +40,9 @@ export default function TicketResult() {
                 </div>
                 <div className="px-[30px] py-[10px]">
                   <h1>Movie</h1>
-                  <h2 className="font-bold text-lg">{dataTicket.movies_name}</h2>
+                  <h2 className="font-bold text-lg">
+                    {dataTicket.movies_name}
+                  </h2>
                 </div>
                 <div className="flex justify-between px-[30px] py-[10px]">
                   <div>
@@ -57,7 +61,9 @@ export default function TicketResult() {
                 <div className="flex justify-between px-[30px] py-[10px]">
                   <div>
                     <h1>Count</h1>
-                    <h2 className="font-bold text-lg">{dataTicket.total_seats} Pieces</h2>
+                    <h2 className="font-bold text-lg">
+                      {dataTicket.total_seats} Pieces
+                    </h2>
                   </div>
                   <div>
                     <h1>Seats</h1>
@@ -66,9 +72,8 @@ export default function TicketResult() {
                   <div>
                     <h1>Price</h1>
                     <h2 className="font-bold text-lg">Rp {dataTicket.price}</h2>
-                  </div>                  
+                  </div>
                 </div>
-                
               </div>
               <div className="border-l-[1px] border-dotted border-black">
                 <div className="flex justify-center bg-[#5F2EEA] rounded-tr-xl h-[20%] w-[25vw]">
@@ -76,7 +81,9 @@ export default function TicketResult() {
                 </div>
                 <div className="px-[20px] py-[5px] mt-5">
                   <h1>Movie</h1>
-                  <h2 className="font-bold text-lg">{dataTicket.movies_name}</h2>
+                  <h2 className="font-bold text-lg">
+                    {dataTicket.movies_name}
+                  </h2>
                 </div>
                 <div className="flex justify-between px-[20px] py-[5px]">
                   <div>
@@ -91,7 +98,10 @@ export default function TicketResult() {
                 <div className="flex justify-between px-[20px] py-[5px]">
                   <div>
                     <h1>Count</h1>
-                    <h2 className="font-bold text-lg"> {dataTicket.total_seats} Pieces</h2>
+                    <h2 className="font-bold text-lg">
+                      {" "}
+                      {dataTicket.total_seats} Pieces
+                    </h2>
                   </div>
                   <div className="mr-[3vw]">
                     <h1>Seats</h1>
@@ -99,8 +109,8 @@ export default function TicketResult() {
                   </div>
                 </div>
                 <div className="ml-[18vw] mt-2">
-                    <h1>Category</h1>
-                    <h2 className="font-bold text-lg">pg-13</h2>
+                  <h1>Category</h1>
+                  <h2 className="font-bold text-lg">pg-13</h2>
                 </div>
               </div>
             </div>

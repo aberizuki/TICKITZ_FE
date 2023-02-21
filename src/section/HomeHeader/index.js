@@ -1,6 +1,6 @@
 export default function HomeHeader() {
   return (
-    <section className="h-[70vh] w-screen p-10">
+    <section className=" w-screen p-10">
       <div className="lg:flex items-center justify-evenly">
         <div>
           <div className="text-[16px] text-[#A0A3BD] lg:text-[21px]">
