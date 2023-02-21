@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/user-regist" element={<UserRegist />} />
         <Route path="/user-reset" element={<UserReset />} />
         <Route path="/" element={<Home />} />
-        <Route path="/movieDetail" element={<MovieDetail />} />
+        <Route path="/movieDetail/:id" element={<MovieDetail />} />
         <Route path="/order" element={<Order />} />
         <Route path="/admin-page" element={<AdminPage />} />
 

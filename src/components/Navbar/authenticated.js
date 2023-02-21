@@ -229,6 +229,7 @@ export default function Authenticated({ setIsLogin }) {
                       <div className="py-1">
                         <Menu.Item>
                           {({ active }) => (
+
                             <Link to={`/profile/${id}`}>
                               <a
                                 href="#"
@@ -242,6 +243,7 @@ export default function Authenticated({ setIsLogin }) {
                                 Profile
                               </a>
                             </Link>
+
                           )}
                         </Menu.Item>
                         <Menu.Item>
