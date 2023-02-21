@@ -5,26 +5,35 @@ import { Link } from "react-router-dom";
 
 export default function UserRegist() {
   const [signupForm, setSignupForm] = useState({
-    full_name: "",
     email: "",
     password: "",
-    phone: "",
   });
   const [validate, setValidate] = useState({ error: false, message: "" });
   const navigate = useNavigate();
 
   const handleSignup = (event) => {
+    const Swal = require("sweetalert2");
+
     event.preventDefault();
     console.log(signupForm);
     axios({
-      url: "http://localhost:5500/api/auth/regis-user",
+      url: "http://localhost:5000/api/v1/auth/register",
       method: "POST",
       data: signupForm,
     })
       .then((res) => {
         // console.log(res.data.data);
-        alert(res.data.message);
-        navigate("/user-Signup");
+        Swal.fire({
+          title: res.data.message,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        // alert(res.data.message);
+        navigate("/user-login");
       })
       .catch((err) => {
         setValidate({ error: true, message: err.response.data.errors });
