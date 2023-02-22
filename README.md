@@ -1,11 +1,10 @@
 # Getting Started with Create React App
-
 -Clone this repo with git clone https://github.com/LESSER-TECH/TICKITZ_FE.git
 -cd TICKITZ_FE
 -npm install to install all required dependencies
 -npm start to start the local server
 
-## File Directori
+## Folder Struktur
 📦public
  ┣ 📜favicon.ico
  ┣ 📜index.html
