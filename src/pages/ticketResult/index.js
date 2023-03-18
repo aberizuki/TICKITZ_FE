@@ -9,7 +9,8 @@ export default function TicketResult() {
 
   const [dataTicket, setDataTicket] = useState([]);
 
-  const url = "http://localhost:5000/api/v1/order/movies";
+  // const url = "http://localhost:5000/api/v1/order/movies";
+  const url = `https://tickitzbe-production.up.railway.app/api/v1/order/movies`;
 
   useEffect(() => {
     axios

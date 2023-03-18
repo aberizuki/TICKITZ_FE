@@ -12,12 +12,13 @@ export default function Order() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/movies/${id}`)
+      // .get(`http://localhost:5000/api/v1/movies/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/movies/${id}`)
       .then((res) => {
         setMovieDetail(res.data.data);
       })
       .catch((err) => console.log(err.message));
-  });
+  }, []);
 
   return (
     <>

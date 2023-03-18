@@ -8,7 +8,8 @@ export default function ProfileEdit() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/${id}`)
+      // .get(`http://localhost:5000/api/v1/users/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/users/${id}`)
       .then((res) => setDataProfile(res.data.data))
       .catch((err) => console.log(err.message));
   });
@@ -39,11 +40,16 @@ export default function ProfileEdit() {
     data.append("password", password);
     data.append("profile_image", profile_image);
     axios
-      .patch(`http://localhost:5000/api/v1/users/${id}`, data, {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      })
+      .patch(
+        // `http://localhost:5000/api/v1/users/${id}`
+        `https://tickitzbe-production.up.railway.app/api/v1/users/${id}`,
+        data,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      )
       .then((res) => {
         alert(res.data.message);
       })
