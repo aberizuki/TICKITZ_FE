@@ -17,7 +17,8 @@ export default function UserRegist() {
     event.preventDefault();
     console.log(signupForm);
     axios({
-      url: "http://localhost:5000/api/v1/auth/register",
+      // url: "http://localhost:5000/api/v1/auth/register",
+      url: "https://tickitzbe-production.up.railway.app/api/v1/auth/register",
       method: "POST",
       data: signupForm,
     })

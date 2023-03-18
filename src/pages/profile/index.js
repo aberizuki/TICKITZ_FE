@@ -13,7 +13,8 @@ export default function Profile() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/${id}`)
+      // .get(`http://localhost:5000/api/v1/users/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/users/${id}`)
       .then((res) => setDataProfile(res.data.data))
       .catch((err) => console.log(err.message));
   });
@@ -59,7 +60,8 @@ export default function Profile() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src={`http://localhost:5000/uploads/images/${dataProfile.profile_image}`}
+                  // src={`http://localhost:5000/uploads/images/${dataProfile.profile_image}`}
+                  src={`https://tickitzbe-production.up.railway.app/uploads/images/${dataProfile.profile_image}`}
                   className="rounded-full w-[200px] h-[210px] object-center"
                 />
               </div>

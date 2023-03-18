@@ -8,22 +8,32 @@ export default function OrderHistory() {
   const [orderHistory, setOrderHistory] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/order/user/${id}`)
-      .then((res) => setOrderHistory(res.data.data))
+      // .get(`http://localhost:5000/api/v1/order/user/${id}`)
+      .get(
+        `https://tickitzbe-production.up.railway.app/api/v1/order/user/${id}`
+      )
+      .then((res) => {
+        if (res.data.data != null) {
+          setOrderHistory(res.data.data);
+        }
+      })
       .catch((err) => console.log(err.message));
-  });
+  }, []);
 
   return (
     <>
       <div>
         <div>
           <h1 className="p-[30px]">Order History</h1>
+          {/* {orderHistory.map((item) => ( */}
           <div className="border-[1px] rounded m-[20px]">
             <div className="flex justify-between px-[10px] py-[50px]">
               <div>
-                <h1 className="text-[14px]">{orderHistory.date}</h1>
+                <h1 className="text-[14px]">
+                  {orderHistory.date || "Belum ada"}
+                </h1>
                 <h2 className="font-bold text-[24px]">
-                  {orderHistory.movies_name}
+                  {orderHistory.movies_name || "Belum ada"}
                 </h2>
               </div>
               <div className="flex items-center">
@@ -35,6 +45,7 @@ export default function OrderHistory() {
               Ticket Active
             </h1>
           </div>
+          {/* ))} */}
         </div>
         <div></div>
       </div>

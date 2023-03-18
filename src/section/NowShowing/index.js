@@ -13,7 +13,8 @@ export default function NowShowing() {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/movies/")
+      // .get("http://localhost:5000/api/v1/movies/")
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/movies`)
       .then((response) => {
         setMovies(response.data.data);
         console.log(response.data.data);
@@ -42,8 +43,9 @@ export default function NowShowing() {
                   <div className="p-2 w-[200px] md:w-[300px] lg:md:w-[300px] bg-white border border-gray-200 rounded-lg shadow ">
                     <div className="flex items-center justify-center">
                       <img
-                        className="rounded-lg"
-                        src={`http://localhost:5000/public/uploads/images/${item.image}`}
+                        className="rounded-lg h-[400px] w-[300px]"
+                        // src={`http://localhost:5000/public/uploads/images/${item.image}`}
+                        src={`https://tickitzbe-production.up.railway.app/public/uploads/images/${item.image}`}
                       />
                     </div>
                     <div className="font-bold text-center pt-5">
