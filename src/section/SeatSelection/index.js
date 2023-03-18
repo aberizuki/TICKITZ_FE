@@ -31,16 +31,17 @@ export default function SeatSelection({ id }) {
   // useEffect(() => {
   //   console.log("data");
   // }, [check]);
-  const [movieDetail, setMovieDetail] = useState();
+  const [movieDetail, setMovieDetail] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/movies/${id}`)
+      // .get(`http://localhost:5000/api/v1/movies/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/movies/${id}`)
       .then((res) => {
         setMovieDetail(res.data.data);
         console.log(res.data.data);
       })
       .catch((err) => console.log(err.message));
-  });
+  }, []);
 
   const [check, setCheck] = useState({
     user_id: JSON.parse(localStorage.getItem("@userLogin")).user.user_id,
@@ -79,7 +80,8 @@ export default function SeatSelection({ id }) {
 
     try {
       await axios({
-        url: "http://localhost:5000/api/v1/order",
+        // url: "http://localhost:5000/api/v1/order",
+        url: "https://tickitzbe-production.up.railway.app/api/v1/order",
         method: "POST",
         data: check,
       });
@@ -87,8 +89,8 @@ export default function SeatSelection({ id }) {
       console.log(error.message);
     }
 
-
-    localStorage.setItem("@order", check.order_id);
+    // localStorage.setItem("@order", check.order_id);
+    localStorage.setItem("@order", check.user_id);
     navigate(`/payment/${id}`);
 
   };

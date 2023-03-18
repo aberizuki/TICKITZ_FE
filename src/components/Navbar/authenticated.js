@@ -14,7 +14,8 @@ export default function Authenticated({ setIsLogin }) {
   const [profile, setProfile] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/users/${id}`)
+      // .get(`http://localhost:5000/api/v1/users/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/users/${id}`)
       .then((res) => setProfile(res.data.data))
       .catch((err) => console.log(err.message));
   });
@@ -211,7 +212,8 @@ export default function Authenticated({ setIsLogin }) {
                     <Menu.Button className="">
                       <img
                         className=" h-[50px] w-[50px] rounded-full mx-2 "
-                        src={`http://localhost:5000/uploads/images/${profile.profile_image}`}
+                        // src={`http://localhost:5000/uploads/images/${profile.profile_image}`}
+                        src={`https://tickitzbe-production.up.railway.app/uploads/images/${profile.profile_image}`}
                       />
                     </Menu.Button>
                   </div>
@@ -229,7 +231,6 @@ export default function Authenticated({ setIsLogin }) {
                       <div className="py-1">
                         <Menu.Item>
                           {({ active }) => (
-
                             <Link to={`/profile/${id}`}>
                               <a
                                 href="#"
@@ -243,7 +244,6 @@ export default function Authenticated({ setIsLogin }) {
                                 Profile
                               </a>
                             </Link>
-
                           )}
                         </Menu.Item>
                         <Menu.Item>

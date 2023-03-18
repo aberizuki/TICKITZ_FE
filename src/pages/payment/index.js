@@ -12,13 +12,15 @@ export default function Payment() {
   const [order, setOrder] = useState();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/movies/${id}`)
+      // .get(`http://localhost:5000/api/v1/movies/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/movies/${id}`)
       .then((res) => setMovieDetail(res.data.data))
       .catch((err) => console.log(err.message));
   });
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/v1/order/${id}`)
+      // .get(`http://localhost:5000/api/v1/order/${id}`)
+      .get(`https://tickitzbe-production.up.railway.app/api/v1/order/${id}`)
       .then((res) => setOrder(res.data.data))
       .catch((err) => console.log(err.message));
   });

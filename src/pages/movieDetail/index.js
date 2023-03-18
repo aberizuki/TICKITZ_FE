@@ -19,7 +19,10 @@ export default function MovieDetail() {
   // };
 
   const getMoviesById = (id) => {
-    return axios.get(`http://localhost:5000/api/v1/movies/${id}`);
+    return axios.get(
+      // `http://localhost:5000/api/v1/movies/${id}`
+      `https://tickitzbe-production.up.railway.app/api/v1/movies/${id}`
+    );
   };
 
   React.useEffect(() => {
@@ -39,10 +42,12 @@ export default function MovieDetail() {
       <Navbar />
       <div className="movieDetail p-[30px]">
         <div className="w-[100%] object-center sm:flex justify-center w-[100%]">
-          <div className="border-[1px] rounded-xl ">
+          <div className="border-[1px] rounded-xl h-[500px] w-[300px]">
             <div className="p-[50px]">
               <img
-                src={`http://localhost:5000/public/uploads/images/${movies.image}`}
+                // src={`http://localhost:5000/public/uploads/images/${movies.image}`}
+                src={`https://tickitzbe-production.up.railway.app/public/uploads/images/${movies.image}`}
+                className="rounded-xl"
               />
             </div>
           </div>
