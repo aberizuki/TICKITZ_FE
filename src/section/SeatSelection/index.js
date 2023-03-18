@@ -87,6 +87,7 @@ export default function SeatSelection({ id }) {
       console.log(error.message);
     }
 
+    // localStorage.setItem("@order", check.order_id);
     localStorage.setItem("@order", check.user_id);
     navigate(`/payment/${id}`);
   };
