@@ -52,7 +52,9 @@ export default function SeatSelection({ id }) {
     theater: "CGV",
     seats: "",
     total_seats: 1,
+
     price: 50000,
+
   });
 
   const handleOnCheck = async (e) => {
@@ -90,6 +92,7 @@ export default function SeatSelection({ id }) {
     // localStorage.setItem("@order", check.order_id);
     localStorage.setItem("@order", check.user_id);
     navigate(`/payment/${id}`);
+
   };
 
   useEffect(() => {
